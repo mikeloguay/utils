@@ -85,6 +85,18 @@
           "style": "diamond",
           "template": "  {{ .UserName }}<transparent> / </>{{ .HostName }}",
           "type": "session"
+        },
+        {
+          "type": "command",
+          "background": "#29315A",
+          "foreground": "#43CCEA",
+          "leading_diamond": "\ue0c5",
+          "style": "diamond",
+          "template": "<transparent> / </>{{ .Output }}",
+          "properties": {
+            "shell": "pwsh",
+            "command": "confluent prompt -f '[%E - %K]'"
+          }
         }
       ],
       "type": "prompt"

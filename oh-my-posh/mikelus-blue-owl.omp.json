@@ -87,14 +87,16 @@
           "type": "session"
         },
         {
+          "type": "command",
           "background": "#29315A",
-          "foreground": "#3EC669",
+          "foreground": "#43CCEA",
+          "leading_diamond": "\ue0c5",
+          "style": "diamond",
+          "template": "<transparent> / </>{{ .Output }}",
           "properties": {
-            "time_format": "15:04:05"
-          },
-          "style": "plain",
-          "template": "<transparent> \ue0ba\ue0bc </>{{ .CurrentDate | date .Format }} ",
-          "type": "time"
+            "shell": "pwsh",
+            "command": "confluent prompt -f '[%E - %K]'"
+          }
         }
       ],
       "type": "prompt"

@@ -10,7 +10,6 @@ import org.apache.kafka.common.serialization.StringDeserializer;
 
 import java.time.Duration;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Properties;
 
 @Slf4j

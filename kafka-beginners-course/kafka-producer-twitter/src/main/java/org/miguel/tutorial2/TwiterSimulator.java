@@ -13,7 +13,7 @@ public class TwiterSimulator {
     private static int count;
 
     public void writeMessageInQue(BlockingQueue<String> msgQueue) {
-        Runnable twitterWriter = () -> msgQueue.add("twitter message  " + count++);
+        Runnable twitterWriter = () -> msgQueue.add(String.format("{ \"message\": \"number %s\" }", count++));
         ScheduledFuture<?> handler =
                 scheduler.scheduleAtFixedRate(twitterWriter, 1, 2, SECONDS);
         Runnable canceller = () -> handler.cancel(false);

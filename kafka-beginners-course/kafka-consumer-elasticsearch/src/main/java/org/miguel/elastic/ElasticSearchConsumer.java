@@ -1,5 +1,6 @@
 package org.miguel.elastic;
 
+import com.google.gson.JsonParser;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpHost;
@@ -12,6 +13,8 @@ import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.serialization.StringDeserializer;
+import org.elasticsearch.action.bulk.BulkRequest;
+import org.elasticsearch.action.bulk.BulkResponse;
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.action.index.IndexResponse;
 import org.elasticsearch.client.RequestOptions;
@@ -56,6 +59,8 @@ public class ElasticSearchConsumer {
         properties.setProperty(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         properties.setProperty(ConsumerConfig.GROUP_ID_CONFIG, groupId);
         properties.setProperty(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
+        properties.setProperty(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, "false");
+        properties.setProperty(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, "5");
 
         // create consumer
         var consumer = new KafkaConsumer<String, String>(properties);
@@ -74,23 +79,47 @@ public class ElasticSearchConsumer {
         while(true) {
             ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(100)); // new in Kafka 2.0.0
 
+            int numRecords = records.count();
+            log.info("Received {} records", numRecords);
+
+            var bulkRequest = new BulkRequest();
+
             for (ConsumerRecord<String, String> record: records) {
                 // where we insert data into Elasticsearch
                 String jsonString = record.value();
 
+                String id = extractIdFromMessage(jsonString);
+
                 var indexRequest = new IndexRequest(
                         "twitter"
                 ).source(jsonString, XContentType.JSON);
+                indexRequest.id(id);
 
-                IndexResponse indexResponse = client.index(indexRequest, RequestOptions.DEFAULT);
-                String id = indexResponse.getId();
-                log.info(id);
+                bulkRequest.add(indexRequest);
 
+                //IndexResponse indexResponse = client.index(indexRequest, RequestOptions.DEFAULT);
+                //log.info(indexResponse.getId());
+
+                //Thread.sleep(1000);
+            }
+
+            if (numRecords > 0) {
+                BulkResponse bulkResponse = client.bulk(bulkRequest, RequestOptions.DEFAULT);
+                log.info("Committing offsets...");
+                consumer.commitSync();
+                log.info("Offsets have been committed");
                 Thread.sleep(1000);
             }
         }
 
         // close the client gracefully
         //client.close();
+    }
+
+    private static String extractIdFromMessage(String jsonString) {
+        return JsonParser.parseString(jsonString)
+                .getAsJsonObject()
+                .get("id")
+                .getAsString();
     }
 }

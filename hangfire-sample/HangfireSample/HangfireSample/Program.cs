@@ -1,5 +1,4 @@
 using Hangfire;
-using Hangfire.HttpJob;
 using Hangfire.SqlServer;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,9 +18,7 @@ builder.Services.AddHangfire(configuration => configuration
             QueuePollInterval = TimeSpan.Zero,
             UseRecommendedIsolationLevel = true,
             DisableGlobalLocks = true
-        })
-        .UseHangfireHttpJob()
-        );
+        }));
 
 builder.Services.AddHangfireServer();
 
@@ -36,7 +33,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.UseHangfireDashboard();
+app.UseHangfireDashboard("/jobs");
 BackgroundJob.Enqueue(() => Console.WriteLine("Hello world from Hangfire!"));
 
 app.Run();

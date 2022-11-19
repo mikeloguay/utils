@@ -33,66 +33,77 @@ Team Lego @ Frontiers
 * Windows PowerShell
 * PowerShell [Core]
 
-<!-- demo on host machine -->
-
 ---
 
-# Setup guide 1/3
+# Setup guide 1/4 (choco)
 
-1. Open Windows Terminal as admin
-2. Run CMD -> Console Host will be open
-3. Set as default terminal app
-4. Run CMD -> Windows Terminal will be open
-5. Install choco
-
+1. Open Windows Terminal as admin (Windows PowerShell by default)
+2. Install choco
 ```powershell
 Set-ExecutionPolicy Bypass -Scope Process -Force; `
     [System.Net.ServicePointManager]::SecurityProtocol `
     = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; `
     iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 ```
----
-# Setup guide 2/3
-
-4. Install all the tools
-
+3. Install all the tools (with choco)
 ```powershell
-choco install `
-    powershell-core `
-    nerd-fonts-cascadiacode `
-    oh-my-posh `
-    terminal-icons.powershell `
-    git `
-    vim `
-    gsudo `
-    -y
+choco install powershell-core nerd-fonts-cascadiacode oh-my-posh git vim gsudo -y
 ```
 
-5. Set PowerShell core as default profile
-6. Enable oh-my-posh on the PowerShell profile
+---
 
+# Setup guide 2/4 (modules)
+
+4. Close and open again Windows Terminal
+5. Open a PowerShell [Core] tab (just installed)
+6. Install Terminal Icons module
+```powershell
+gsudo Install-Module -Name Terminal-Icons -Repository PSGallery -Confirm
+```
+7. Update PSReadline (PowerShell module)
+```powershell
+gsudo install-Module PSReadLine -force
+```
+
+---
+
+# Setup guide 3/3 (profile)
+
+8. Create a new profile (if there is none)
 ```powershell
 New-Item -Path $PROFILE -ItemType "file" -Force
+```
+9.  Enable oh-my-posh in our profile
+```powershell
 Add-Content $PROFILE "oh-my-posh init pwsh | Invoke-Expression"
 ```
-
----
-# Setup guide 2/3
-
-7. Enable terminal icons on PowerShell profile
+10. Enable Terminal Icons in our profile
 ```powershell
 Add-Content $PROFILE "Import-Module -Name Terminal-Icons"
 ```
 
-8. Clone sample git repo
+---
+
+# Setup guide 4/4 (terminal)
+
+11. Set PowerShell [Core] as default on Windows Terminal
+12. Set `Caskaidia MF Mono` as the default font
+13. Set Windows Terminal as default terminal application
+14. Open maximized by default
+15. Automaticallyy copy selection to clipboard
+
+---
+
+# Features demo guide
+
+- Default console
+- Clone sample git repo
 ```powershell
 git clone https://github.com/HangfireIO/Hangfire.git
 ```
-
-9. Update PSReadline (PowerShell module)
-```powershell
-gsudo install-Module PSReadLine -force
-```
+- Change oh-my-posh theme
+  - From github
+- Kubernetes prompt
 
 ---
 

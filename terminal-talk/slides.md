@@ -35,6 +35,29 @@ Team Lego @ Frontiers
 
 ---
 
+# Prompt
+
+![width:600px](prompt-cmd.png)
+![width:600px](prompt-powershell.png)
+![width:600px](prompt-wsl.png)
+![width:1200px](prompt-posh.png)
+
+---
+
+# Profile
+
+* Script to customize the environment
+  * Aliases
+  * Functions
+  * Customizations (prompts...)
+* At user/host level
+* Default location:
+```powershell
+echo $PROFILE
+```
+
+---
+
 # Setup guide 1/4 (choco)
 
 1. Open Windows Terminal as admin (Windows PowerShell by default)
@@ -92,6 +115,7 @@ Add-Content $PROFILE "Import-Module -Name Terminal-Icons"
 14. Open maximized by default
 15. Automaticallyy copy selection to clipboard
 
+
 ---
 
 # Features demo guide
@@ -104,6 +128,10 @@ git clone https://github.com/HangfireIO/Hangfire.git
 - Change oh-my-posh theme
   - From github
 - Kubernetes prompt
+- PSReadline history with list view
+```powershell
+Set-PSReadLineOption -PredictionViewStyle ListView
+```
 
 ---
 

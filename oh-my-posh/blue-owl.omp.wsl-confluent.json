@@ -95,7 +95,7 @@
           "template": "<transparent> / </>{{ .Output }}",
           "properties": {
             "shell": "bash",
-            "command": "confluent prompt -f '[%E - %K]'"
+            "command": "confluent prompt -f '[Confluent:%E]'"
           }
         }
       ],

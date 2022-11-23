@@ -14,7 +14,16 @@ Team Lego @ Frontiers
 
 ---
 
+# Follow this presentation
+
+![bg right:40% 80%](https://marp.app/assets/marp.svg)
+
+https://github.com/mikeloguay/utils/blob/main/terminal-talk/README.md
+
+---
+
 # The basics: Terminal/Console vs Shell
+
 ![](terminal-and-shell.png)
 
 ---
@@ -127,12 +136,11 @@ git clone https://github.com/HangfireIO/Hangfire.git
 ```
 - Change oh-my-posh theme
   - From github
-- Kubernetes prompt
 - PSReadline history with list view
 ```powershell
 Set-PSReadLineOption -PredictionViewStyle ListView
 ```
-
+- Kubernetes prompt
 ---
 
 # Some references

@@ -86,16 +86,6 @@
           "template": "\ufd31 {{.Context}}{{if .Namespace}} :: {{.Namespace}}{{end}}",
           "trailing_diamond": "\ue0b4",
           "type": "kubectl"
-        },
-        {
-          "background": "#29315A",
-          "foreground": "#3EC669",
-          "properties": {
-            "time_format": "15:04:05"
-          },
-          "style": "plain",
-          "template": "<transparent> \ue0ba\ue0bc </>{{ .CurrentDate | date .Format }} ",
-          "type": "time"
         }
       ],
       "type": "prompt"

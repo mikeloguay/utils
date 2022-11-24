@@ -124,10 +124,9 @@ Add-Content $PROFILE "Import-Module -Name Terminal-Icons"
 14. Open maximized by default
 15. Automaticallyy copy selection to clipboard
 
-
 ---
 
-# Features demo guide
+# Features demo guide 1/2
 
 - Default console
 - Clone sample git repo
@@ -136,11 +135,18 @@ git clone https://github.com/HangfireIO/Hangfire.git
 ```
 - Change oh-my-posh theme
   - From github
+
+---
+
+# Features demo guide 2/2
+
 - PSReadline history with list view
 ```powershell
 Set-PSReadLineOption -PredictionViewStyle ListView
 ```
 - Kubernetes prompt
+- WSL integration
+  - Confluent CLI prompt example
 ---
 
 # Some references

@@ -134,7 +134,11 @@ Add-Content $PROFILE "Import-Module -Name Terminal-Icons"
 git clone https://github.com/HangfireIO/Hangfire.git
 ```
 - Change oh-my-posh theme
-  - From github
+  - From github raw URL
+  - Command to see all themes inside the Terminal:
+```powershell
+Get-PoshThemes
+```
 
 ---
 

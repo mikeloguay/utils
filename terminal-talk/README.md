@@ -122,7 +122,7 @@ Add-Content $PROFILE "Import-Module -Name Terminal-Icons"
 12. Set `Caskaidia MF Mono` as the default font
 13. Set Windows Terminal as default terminal application
 14. Open maximized by default
-15. Automaticallyy copy selection to clipboard
+15. Automatically copy selection to clipboard
 
 ---
 

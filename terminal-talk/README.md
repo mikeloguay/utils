@@ -122,12 +122,11 @@ Add-Content $PROFILE "Import-Module -Name Terminal-Icons"
 12. Set `Caskaidia MF Mono` as the default font
 13. Set Windows Terminal as default terminal application
 14. Open maximized by default
-15. Automaticallyy copy selection to clipboard
-
+15. Automatically copy selection to clipboard
 
 ---
 
-# Features demo guide
+# Features demo guide 1/2
 
 - Default console
 - Clone sample git repo
@@ -135,12 +134,23 @@ Add-Content $PROFILE "Import-Module -Name Terminal-Icons"
 git clone https://github.com/HangfireIO/Hangfire.git
 ```
 - Change oh-my-posh theme
-  - From github
+  - From github raw URL
+  - Command to see all themes inside the Terminal:
+```powershell
+Get-PoshThemes
+```
+
+---
+
+# Features demo guide 2/2
+
 - PSReadline history with list view
 ```powershell
 Set-PSReadLineOption -PredictionViewStyle ListView
 ```
 - Kubernetes prompt
+- WSL integration
+  - Confluent CLI prompt example
 ---
 
 # Some references

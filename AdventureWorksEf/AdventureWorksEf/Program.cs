@@ -4,18 +4,57 @@ using Microsoft.EntityFrameworkCore;
 
 using (var context = new AdventureWorksContext())
 {
-    //var addressTypes = await context.AddressTypes.ToListAsync();
-    //addressTypes.ForEach(a => Console.WriteLine(a.Name));
+    //IQueryable<IEnumerable<Person>> ppp = context.People
+    //    .GroupBy(p => p.EmailPromotion)
+    //    .Select(g => g.OrderByDescending(p => p.BusinessEntityId)
+    //        .Take(1));
 
-    var person = await context.People.SingleAsync(p => p.BusinessEntityId == 20777);
 
-    var emailAddress = new EmailAddress
+    List<Person> peopleByEmailPromotion = await context.People
+        .GroupBy(p => p.EmailPromotion)
+        .Select(g => g.OrderByDescending(p => p.BusinessEntityId).FirstOrDefault())
+        .ToListAsync();
+
+    //List<IEnumerable<Person>> peopleGroups = await context.People
+    //    .GroupBy(p => p.EmailPromotion)
+    //    .Select(g => g.OrderByDescending(p => p.BusinessEntityId)
+    //        .Take(1))
+    //    .ToListAsync();
+
+    //PrintInts(peopleByEmailPromotion);
+    PrintPeople(peopleByEmailPromotion);
+    //PrintPeopleGroups(peopleGroups);
+}
+
+void PrintInts(List<int> peopleByEmailPromotion)
+{
+    peopleByEmailPromotion.ForEach(p =>
     {
-        EmailAddress1 = "mikelus@home.test"
-    };
+        Console.WriteLine(p);
+    });
+}
 
-    person.EmailAddresses.Add(emailAddress);
-    int rowsAffected = context.SaveChanges();
+void PrintPeople(List<Person> peopleByEmailPromotion)
+{
+    peopleByEmailPromotion.ForEach(p =>
+    {
+        Console.WriteLine($"{nameof(p.BusinessEntityId)}={p.BusinessEntityId}"
+            + $", {nameof(p.EmailPromotion)}={p.EmailPromotion}"
+            + $", {nameof(p.FirstName)}={p.FirstName}"
+            );
+    });
+}
 
-    Console.WriteLine($"rowsAffected={rowsAffected}. EmailAddressID={emailAddress.EmailAddressId}");
+void PrintPeopleGroups(List<IEnumerable<Person>> peopleGroups)
+{
+    peopleGroups.ForEach(pg
+        =>
+    {
+        Person p = pg.First();
+        
+        Console.WriteLine($"{nameof(p.BusinessEntityId)}={p.BusinessEntityId}"
+            + $", {nameof(p.EmailPromotion)}={p.EmailPromotion}"
+            + $", {nameof(p.FirstName)}={p.FirstName}"
+            );
+    });
 }

@@ -1,0 +1,10 @@
+USE TestContainerDB;
+
+DROP TABLE IF EXISTS Casino.Brand;
+
+CREATE TABLE Casino.Brand
+(
+    Id INT NOT NULL, 
+    [Name] NVARCHAR(50) NOT NULL,
+    CONSTRAINT PK_Brand PRIMARY KEY CLUSTERED (Id ASC)
+);

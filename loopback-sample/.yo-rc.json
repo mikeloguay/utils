@@ -1,0 +1,6 @@
+{
+  "@loopback/cli": {
+    "packageManager": "npm",
+    "version": "5.1.0"
+  }
+}

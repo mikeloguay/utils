@@ -5,7 +5,6 @@ interface CustomerDetailsProps {
 }
 
 const CustomerDetails = (props: CustomerDetailsProps) => {
-
     const {customer} = props;
 
     return (<li key={customer.id}>Name: {customer.name} - Age: {customer.age}</li>)

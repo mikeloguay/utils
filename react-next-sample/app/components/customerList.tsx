@@ -1,3 +1,4 @@
+import CustomerDetails from "./customerDetails";
 import { Customer } from "./types";
 
 interface CustomerListProps {
@@ -12,7 +13,7 @@ const CustomerList = (props: CustomerListProps) => {
     <>
       <p>This is a list of customers</p>
       <ol>
-        {customers.map(c => (<li key={c.id}>Name: {c.name} - Age: {c.age}</li>))}
+        {customers.map(c => (<CustomerDetails key={c.id} customer={c} />))}
       </ol>
     </>
   );

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34701.34
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DecodePyramid", "DecodePyramid\DecodePyramid.csproj", "{2C326713-B645-40C4-8BF3-6895E88316C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DecodePyramid.Test", "DecodePyramid.Test\DecodePyramid.Test.csproj", "{06646AB4-3262-4CC1-8102-F8F0FA7ED230}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2C326713-B645-40C4-8BF3-6895E88316C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C326713-B645-40C4-8BF3-6895E88316C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C326713-B645-40C4-8BF3-6895E88316C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C326713-B645-40C4-8BF3-6895E88316C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06646AB4-3262-4CC1-8102-F8F0FA7ED230}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06646AB4-3262-4CC1-8102-F8F0FA7ED230}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06646AB4-3262-4CC1-8102-F8F0FA7ED230}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06646AB4-3262-4CC1-8102-F8F0FA7ED230}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2E7F61B3-A781-474C-A37B-E8E6C71B6E67}
+	EndGlobalSection
+EndGlobal

@@ -1,9 +1,9 @@
 using System.ComponentModel.DataAnnotations;
 
 namespace MyLib;
-public record MyOptions
+public record MainOptions
 {
-    public const string SectionName = "MyOptionsSection";
+    public const string SECTION_NAME = "MainOptionsSection";
 
     public required string RequiredKeyWithDefaultValue { get; set; } = "MyDefaultValue";
 

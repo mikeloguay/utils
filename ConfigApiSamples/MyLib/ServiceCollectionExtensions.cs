@@ -12,7 +12,7 @@ public static class ServiceCollectionExtensions
     {
         services.AddOptions<MyOptions>()
             .Bind(configSection)
-            .ValidateDataAnnotations()
+            //.ValidateDataAnnotations()
             .ValidateOnStart();
 
         if (options is not null) services.Configure(options);

@@ -15,6 +15,8 @@ public static class ServiceCollectionExtensions
             .ValidateDataAnnotations()
             .ValidateOnStart();
 
+        if (options is not null) services.Configure(options);
+
         services.AddSingleton<IMyService, MyService>();
         return services;
     }

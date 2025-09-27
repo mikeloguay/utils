@@ -5,7 +5,9 @@ var builder = WebApplication.CreateBuilder(args);
 IConfiguration config = builder.Configuration;
 
 builder.Services.AddOpenApi();
-builder.Services.AddMyServiceFromLib(config.GetSection("MyOptions"));
+builder.Services.AddMyServiceFromLib(config.GetSection("MyOptions"), options =>
+{
+    options.RequiredKey = "Overriden with action";});
 
 var app = builder.Build();
 

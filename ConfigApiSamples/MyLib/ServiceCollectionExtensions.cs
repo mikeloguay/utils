@@ -7,12 +7,11 @@ namespace MyLib;
 public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddMyServiceFromLib(this IServiceCollection services,
-        IConfigurationSection configSection,
         Action<MyOptions>? options = null)
     {
         services.AddOptions<MyOptions>()
-            .Bind(configSection)
-            //.ValidateDataAnnotations()
+            .BindConfiguration(MyOptions.SectionName)
+            .ValidateDataAnnotations()
             .ValidateOnStart();
 
         if (options is not null) services.Configure(options);

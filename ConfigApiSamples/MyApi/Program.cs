@@ -6,9 +6,9 @@ IConfiguration config = builder.Configuration;
 
 builder.Services.AddOpenApi();
 
-builder.Services.AddMyServiceFromLib(config.GetSection("MyOptions"), options =>
+builder.Services.AddMyServiceFromLib(options =>
 {
-    options.RequiredKey = "i";
+    options.RequiredKey = "looooong value overriden";
 });
 
 var app = builder.Build();
